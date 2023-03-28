@@ -5,7 +5,7 @@ class A_star_Graph:
     def connections(self,c):
         return self.a_list[c]
     def heur (self,H):
-        self.H = H
+        self.H = H #intializing heurastic Value
     def h(self,i):
         return self.H[i]
     def a_star(self,start_node,end_node):
@@ -18,8 +18,7 @@ class A_star_Graph:
 
         while len(open) > 0:
             n = None
-
-            for  i in open:
+            for  i in open: # Checking Actual distance to Heurastic Value
                 if n == None or g[i]+self.h(i) < g[n] + self.h(n):
                     n = i
             if n == None:
@@ -31,7 +30,6 @@ class A_star_Graph:
                     n = parents[n]
                 path.append(start_node)
                 path.reverse()
-
                 return path,g[end_node]
             for (v, weight) in self.connections(n):
                 if v not in open and v not in closed:
@@ -53,7 +51,7 @@ class A_star_Graph:
 
 
 
-input = open("F:\CSE 422\LAB 1_A-Star\input.txt",'r') 
+input = open("FIle_Path",'r') 
 line = []
 a_list = {}
 H = {}
